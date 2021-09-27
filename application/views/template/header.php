@@ -26,7 +26,7 @@
 </head>
 <style type="text/css">
     .body-back{
-        background-image: linear-gradient(150deg, #fff 50%, #5978de 10%);
+        background-image: linear-gradient(150deg, #fff 50%, #1e88e5 10%);
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
