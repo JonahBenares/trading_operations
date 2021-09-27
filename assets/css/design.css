@@ -1,0 +1,8 @@
+.body-back{
+	background-image: linear-gradient(150deg, #fff 50%, #5978de 10%);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  	min-height: 500px;
+}
