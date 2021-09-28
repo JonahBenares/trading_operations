@@ -179,6 +179,15 @@ class super_model extends CI_Model
         }
     }
 
+  
+    public function insert_return_id($table, $data){
+       $this->db->insert($table, $data);
+       $insert_id = $this->db->insert_id();
+
+       return  $insert_id;
+    } 
+
+
     public function count_rows_where($table,$column,$value)
     {
         $this->db->from($table);
