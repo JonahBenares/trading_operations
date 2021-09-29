@@ -127,8 +127,9 @@
         function genXML(){
               var gen = $('#generator').find(":selected").val();
               var url = document.getElementById('url').value;
-            
+            alert(gen);
               if(gen=="06CENPRI_U01"){
+                alert(url+"masterfile/generate_xml_01");
                 document.getElementById("generate_xml").action = url+"masterfile/generate_xml_01";
                 document.getElementById("hidden").style.display = 'none';
               }
