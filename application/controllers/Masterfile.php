@@ -42,6 +42,7 @@ class Masterfile extends CI_Controller {
         
         $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+        $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $default_price = $this->input->post('en_default_price');
@@ -81,8 +82,12 @@ class Masterfile extends CI_Controller {
             <m:MessagePayload>
              <m:GeneratingBid>
               <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-              <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-              <m:RegisteredGenerator>
+              <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+              if($standing_bid==1){
+                 $xmlString.='<m:dayType>ALL</m:dayType>';
+              }
+
+              $xmlString.='<m:RegisteredGenerator>
               <m:mrid>'.$generator.'</m:mrid>
               </m:RegisteredGenerator>
               <m:MarketParticipant>
@@ -238,6 +243,7 @@ class Masterfile extends CI_Controller {
 
         $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+         $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
@@ -264,8 +270,11 @@ class Masterfile extends CI_Controller {
             <m:MessagePayload>
              <m:GeneratingBid>
               <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-              <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-              <m:RegisteredGenerator>
+              <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+                if($standing_bid==1){
+                 $xmlString.='<m:dayType>ALL</m:dayType>';
+              }
+               $xmlString.='<m:RegisteredGenerator>
               <m:mrid>'.$generator.'</m:mrid>
               </m:RegisteredGenerator>
               <m:MarketParticipant>
@@ -424,6 +433,7 @@ class Masterfile extends CI_Controller {
 
         $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+        $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
@@ -489,8 +499,11 @@ class Masterfile extends CI_Controller {
                 <m:MessagePayload>
                  <m:GeneratingBid>
                   <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-                  <m:RegisteredGenerator>
+                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+                 if($standing_bid==1){
+                     $xmlString.='<m:dayType>ALL</m:dayType>';
+                  }
+                   $xmlString.='<m:RegisteredGenerator>
                   <m:mrid>'.$generator.'</m:mrid>
                   </m:RegisteredGenerator>
                   <m:MarketParticipant>
@@ -660,12 +673,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set1_1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>4.4</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -706,12 +719,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.4</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -723,12 +736,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.4</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -743,12 +756,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.4</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -764,12 +777,12 @@ class Masterfile extends CI_Controller {
                             <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                             <m:BidPriceCurve>
                              <m:CurveSchedData>
-                              <m:xAxisData>0</m:xAxisData>
-                              <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                              <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                              <m:CurveSchedData>
-                              <m:xAxisData>4.4</m:xAxisData>
-                              <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                              <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
@@ -782,12 +795,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>4.4</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -828,12 +841,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr_set2.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.4</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -845,12 +858,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change_set2.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.4</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change_set2.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -865,12 +878,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.4</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -904,6 +917,7 @@ class Masterfile extends CI_Controller {
 
         $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+         $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
@@ -948,8 +962,11 @@ class Masterfile extends CI_Controller {
                 <m:MessagePayload>
                  <m:GeneratingBid>
                   <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-                  <m:RegisteredGenerator>
+                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+                   if($standing_bid==1){
+                     $xmlString.='<m:dayType>ALL</m:dayType>';
+                  }
+                   $xmlString.='<m:RegisteredGenerator>
                   <m:mrid>'.$generator.'</m:mrid>
                   </m:RegisteredGenerator>
                   <m:MarketParticipant>
@@ -1096,12 +1113,12 @@ class Masterfile extends CI_Controller {
                         <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                         <m:BidPriceCurve>
                          <m:CurveSchedData>
-                          <m:xAxisData>0</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                          <m:CurveSchedData>
-                          <m:xAxisData>6.6</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
                        </m:BidSchedule>';
@@ -1118,12 +1135,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>6.6</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -1164,12 +1181,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1181,12 +1198,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1201,12 +1218,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1236,6 +1253,7 @@ class Masterfile extends CI_Controller {
 
         $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+         $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
@@ -1299,8 +1317,11 @@ class Masterfile extends CI_Controller {
                 <m:MessagePayload>
                  <m:GeneratingBid>
                   <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-                  <m:RegisteredGenerator>
+                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+                   if($standing_bid==1){
+                     $xmlString.='<m:dayType>ALL</m:dayType>';
+                  }
+                  $xmlString.='<m:RegisteredGenerator>
                   <m:mrid>'.$generator.'</m:mrid>
                   </m:RegisteredGenerator>
                   <m:MarketParticipant>
@@ -1446,12 +1467,12 @@ class Masterfile extends CI_Controller {
                         <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
                         <m:BidPriceCurve>
                          <m:CurveSchedData>
-                          <m:xAxisData>0</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                          <m:CurveSchedData>
-                          <m:xAxisData>6.6</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
                        </m:BidSchedule>';
@@ -1462,12 +1483,12 @@ class Masterfile extends CI_Controller {
                             <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                             <m:BidPriceCurve>
                              <m:CurveSchedData>
-                              <m:xAxisData>0</m:xAxisData>
-                              <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                              <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                              <m:CurveSchedData>
-                              <m:xAxisData>6.6</m:xAxisData>
-                              <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                              <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
@@ -1481,12 +1502,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set1_1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>6.6</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -1527,12 +1548,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1544,12 +1565,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1564,12 +1585,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1585,12 +1606,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>6.6</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -1605,12 +1626,12 @@ class Masterfile extends CI_Controller {
                             <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
                             <m:BidPriceCurve>
                              <m:CurveSchedData>
-                              <m:xAxisData>0</m:xAxisData>
-                              <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                              <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                              <m:CurveSchedData>
-                              <m:xAxisData>6.6</m:xAxisData>
-                              <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                              <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
@@ -1651,12 +1672,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr_set2.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1668,12 +1689,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change_set2.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change_set2.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1688,12 +1709,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -1725,6 +1746,7 @@ class Masterfile extends CI_Controller {
        
         $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+         $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
@@ -1769,8 +1791,11 @@ class Masterfile extends CI_Controller {
                 <m:MessagePayload>
                  <m:GeneratingBid>
                   <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-                  <m:RegisteredGenerator>
+                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+                   if($standing_bid==1){
+                     $xmlString.='<m:dayType>ALL</m:dayType>';
+                  }
+                  $xmlString.='<m:RegisteredGenerator>
                   <m:mrid>'.$generator.'</m:mrid>
                   </m:RegisteredGenerator>
                   <m:MarketParticipant>
@@ -1917,12 +1942,12 @@ class Masterfile extends CI_Controller {
                         <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                         <m:BidPriceCurve>
                          <m:CurveSchedData>
-                          <m:xAxisData>0</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                          <m:CurveSchedData>
-                          <m:xAxisData>6.6</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
                        </m:BidSchedule>';
@@ -1939,12 +1964,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>6.6</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -1985,12 +2010,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2002,12 +2027,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2022,12 +2047,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2057,6 +2082,7 @@ class Masterfile extends CI_Controller {
 
            $submission_date = date("Y-m-d",strtotime($this->input->post('submission_date')));
         $generator= $this->input->post('generator');
+        $standing_bid= $this->input->post('standing_bid');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
@@ -2120,8 +2146,11 @@ class Masterfile extends CI_Controller {
                 <m:MessagePayload>
                  <m:GeneratingBid>
                   <m:startTime>'.$start_date.'T00:00:00+08:00</m:startTime>
-                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>
-                  <m:RegisteredGenerator>
+                  <m:stopTime>'.$end_date.'T00:00:00+08:00</m:stopTime>';
+                   if($standing_bid==1){
+                     $xmlString.='<m:dayType>ALL</m:dayType>';
+                  }
+                  $xmlString.='<m:RegisteredGenerator>
                   <m:mrid>'.$generator.'</m:mrid>
                   </m:RegisteredGenerator>
                   <m:MarketParticipant>
@@ -2267,12 +2296,12 @@ class Masterfile extends CI_Controller {
                         <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
                         <m:BidPriceCurve>
                          <m:CurveSchedData>
-                          <m:xAxisData>0</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                          <m:CurveSchedData>
-                          <m:xAxisData>6.6</m:xAxisData>
-                          <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                          <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                          <m:y1AxisData>0</m:y1AxisData>
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
                        </m:BidSchedule>';
@@ -2283,12 +2312,12 @@ class Masterfile extends CI_Controller {
                             <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                             <m:BidPriceCurve>
                              <m:CurveSchedData>
-                              <m:xAxisData>0</m:xAxisData>
-                              <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                              <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                              <m:CurveSchedData>
-                              <m:xAxisData>6.6</m:xAxisData>
-                              <m:y1AxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:y1AxisData>
+                              <m:xAxisData>'. (empty($dr_default_price) ? '0' : $dr_default_price).'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
@@ -2302,12 +2331,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set1_1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>6.6</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -2348,12 +2377,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2365,12 +2394,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2385,12 +2414,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2406,12 +2435,12 @@ class Masterfile extends CI_Controller {
                     <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
                     <m:BidPriceCurve>
                      <m:CurveSchedData>
-                      <m:xAxisData>0</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>6.6</m:xAxisData>
-                      <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:y1AxisData>0</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
@@ -2426,12 +2455,12 @@ class Masterfile extends CI_Controller {
                             <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
                             <m:BidPriceCurve>
                              <m:CurveSchedData>
-                              <m:xAxisData>0</m:xAxisData>
-                              <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                              <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                              <m:CurveSchedData>
-                              <m:xAxisData>6.6</m:xAxisData>
-                              <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                              <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                              <m:y1AxisData>0</m:y1AxisData>
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
@@ -2472,12 +2501,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr_set2.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2489,12 +2518,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change_set2.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_price_change_set2.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
@@ -2509,12 +2538,12 @@ class Masterfile extends CI_Controller {
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.6</m:xAxisData>
-                                  <m:y1AxisData>'.$dr_default_price.'</m:y1AxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
