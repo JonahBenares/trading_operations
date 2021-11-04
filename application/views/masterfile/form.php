@@ -80,10 +80,10 @@
                                     <div class="form-group">
                                          <div class="row">
                                             <div class="col-lg-12">
-                                                  <p class="margin-b0">Standing Bid:</p>
-                                                <input type="checkbox" name="standing_bid" value='1'>
-                                              
-                                                
+                                                <div class="form-group" style=" display: flex; /* or inline-flex */">
+                                                    <p class="margin-b0">Standing Bid:</p>
+                                                    <input type="checkbox" name="standing_bid" value='1' style="margin-left:10px;margin-top: 3px;">
+                                                </div>                                                
                                             </div>
 
                                           
