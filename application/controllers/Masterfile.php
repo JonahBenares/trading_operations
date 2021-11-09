@@ -168,22 +168,25 @@ class Masterfile extends CI_Controller {
                             $oldv = $start_hour;
                             if(!empty($new_start)){
 
-                               $xmlString .= '<m:BidSchedule>
-                                    <m:timeIntervalStart>'.$start_date.'T'. $new_start.':00:00+08:00</m:timeIntervalStart>
-                                    <m:timeIntervalEnd>'.$start_date.'T'.$oldv.':00:00+08:00</m:timeIntervalEnd>
-                                    <m:BidPriceCurve>
-                                     <m:CurveSchedData>
-                                      <m:xAxisData>0</m:xAxisData>
-                                      <m:y1AxisData>'.$default_price.'</m:y1AxisData>
-                                     </m:CurveSchedData>
-                                     <m:CurveSchedData>
-                                      <m:xAxisData>4.5</m:xAxisData>
-                                      <m:y1AxisData>'.$default_price.'</m:y1AxisData>
-                                     </m:CurveSchedData>
-                                    </m:BidPriceCurve>
-                                   </m:BidSchedule>';
+                                if($new_start!= $oldv){
+                                   $xmlString .= '<m:BidSchedule>
+                                        <m:timeIntervalStart>'.$start_date.'T'. $new_start.':00:00+08:00</m:timeIntervalStart>
+                                        <m:timeIntervalEnd>'.$start_date.'T'.$oldv.':00:00+08:00</m:timeIntervalEnd>
+                                        <m:BidPriceCurve>
+                                         <m:CurveSchedData>
+                                          <m:xAxisData>0</m:xAxisData>
+                                          <m:y1AxisData>'.$default_price.'</m:y1AxisData>
+                                         </m:CurveSchedData>
+                                         <m:CurveSchedData>
+                                          <m:xAxisData>4.5</m:xAxisData>
+                                          <m:y1AxisData>'.$default_price.'</m:y1AxisData>
+                                         </m:CurveSchedData>
+                                        </m:BidPriceCurve>
+                                       </m:BidSchedule>';
+                                }
 
                             }
+
 
                                $xmlString .= '<m:BidSchedule>
                                     <m:timeIntervalStart>'.$start_date.'T'. $start_hour.':00:00+08:00</m:timeIntervalStart>
@@ -199,6 +202,7 @@ class Masterfile extends CI_Controller {
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
                                    </m:BidSchedule>';
+                            
 
                     }
 
@@ -357,21 +361,22 @@ class Masterfile extends CI_Controller {
                                 }*/
                             $oldv = $start_hour;
                             if(!empty($new_start)){
-                                 
-                                $xmlString .= '<m:BidSchedule>
-                                <m:timeIntervalStart>'.$start_date.'T'. $new_start.':00:00+08:00</m:timeIntervalStart>
-                                <m:timeIntervalEnd>'.$start_date.'T'.$oldv.':00:00+08:00</m:timeIntervalEnd>
-                                <m:BidPriceCurve>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>4.5</m:xAxisData>
-                                  <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                </m:BidPriceCurve>
-                               </m:BidSchedule>';
+                                 if($new_start!= $oldv){
+                                    $xmlString .= '<m:BidSchedule>
+                                    <m:timeIntervalStart>'.$start_date.'T'. $new_start.':00:00+08:00</m:timeIntervalStart>
+                                    <m:timeIntervalEnd>'.$start_date.'T'.$oldv.':00:00+08:00</m:timeIntervalEnd>
+                                    <m:BidPriceCurve>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>0</m:xAxisData>
+                                      <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>4.5</m:xAxisData>
+                                      <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                    </m:BidPriceCurve>
+                                   </m:BidSchedule>';
+                               }
                             }
 
 
@@ -581,6 +586,8 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_en = $en_start_hour;
                             if(!empty($new_start_en)){
+
+                                 if($new_start_en!= $oldv_en){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_en.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_en.':00:00+08:00</m:timeIntervalEnd>
@@ -595,6 +602,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
@@ -714,20 +722,23 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_dr = $dr_start_hour;
                             if(!empty($new_start_dr)){
-                                $xmlString .= '<m:BidSchedule>
-                                <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
-                                <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
-                                <m:BidPriceCurve>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
-                                  <m:y1AxisData>0</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
-                                  <m:y1AxisData>0</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                </m:BidPriceCurve>
-                               </m:BidSchedule>';
+
+                                if($new_start_dr!= $oldv_dr){
+                                    $xmlString .= '<m:BidSchedule>
+                                    <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
+                                    <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
+                                    <m:BidPriceCurve>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:y1AxisData>0</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:y1AxisData>0</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                    </m:BidPriceCurve>
+                                   </m:BidSchedule>';
+                                 }
 
                             }
 
@@ -836,6 +847,7 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_dr_set2 = $dr_start_hour_set2;
                             if(!empty($new_start_dr_set2)){
+                                if($new_start_dr_set2!= $oldv_dr_set2){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr_set2.':00:00+08:00</m:timeIntervalEnd>
@@ -850,6 +862,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
@@ -1045,20 +1058,22 @@ class Masterfile extends CI_Controller {
                            
                             $oldv_en = $en_start_hour;
                             if(!empty($new_start_en)){
-                                $xmlString .= '<m:BidSchedule>
-                                <m:timeIntervalStart>'.$start_date.'T'. $new_start_en.':00:00+08:00</m:timeIntervalStart>
-                                <m:timeIntervalEnd>'.$start_date.'T'.$oldv_en.':00:00+08:00</m:timeIntervalEnd>
-                                <m:BidPriceCurve>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>0</m:xAxisData>
-                                  <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
-                                  <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                </m:BidPriceCurve>
-                               </m:BidSchedule>';
+                                if($new_start_en!= $oldv_en){
+                                    $xmlString .= '<m:BidSchedule>
+                                    <m:timeIntervalStart>'.$start_date.'T'. $new_start_en.':00:00+08:00</m:timeIntervalStart>
+                                    <m:timeIntervalEnd>'.$start_date.'T'.$oldv_en.':00:00+08:00</m:timeIntervalEnd>
+                                    <m:BidPriceCurve>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>0</m:xAxisData>
+                                      <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>6.7</m:xAxisData>
+                                      <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                    </m:BidPriceCurve>
+                                   </m:BidSchedule>';
+                                }
 
                             }
 
@@ -1176,20 +1191,22 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_dr = $dr_start_hour;
                             if(!empty($new_start_dr)){
-                                $xmlString .= '<m:BidSchedule>
-                                <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
-                                <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
-                                <m:BidPriceCurve>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
-                                  <m:y1AxisData>0</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                 <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
-                                  <m:y1AxisData>0</m:y1AxisData>
-                                 </m:CurveSchedData>
-                                </m:BidPriceCurve>
-                               </m:BidSchedule>';
+                                  if($new_start_dr!= $oldv_dr){
+                                    $xmlString .= '<m:BidSchedule>
+                                    <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
+                                    <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
+                                    <m:BidPriceCurve>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:y1AxisData>0</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:y1AxisData>0</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                    </m:BidPriceCurve>
+                                   </m:BidSchedule>';
+                                }
 
                             }
 
@@ -1397,6 +1414,7 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_en = $en_start_hour;
                             if(!empty($new_start_en)){
+                                 if($new_start_en!= $oldv_en){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_en.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_en.':00:00+08:00</m:timeIntervalEnd>
@@ -1411,6 +1429,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                             }
 
                             }
 
@@ -1543,6 +1562,7 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_dr = $dr_start_hour;
                             if(!empty($new_start_dr)){
+                                  if($new_start_dr!= $oldv_dr){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
@@ -1557,6 +1577,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
@@ -1667,6 +1688,7 @@ class Masterfile extends CI_Controller {
 
                      
                             if(!empty($new_start_dr_set2)){
+                                  if($new_start_dr_set2!= $oldv_dr_set2){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr_set2.':00:00+08:00</m:timeIntervalEnd>
@@ -1681,6 +1703,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
@@ -1874,6 +1897,7 @@ class Masterfile extends CI_Controller {
                            
                             $oldv_en = $en_start_hour;
                             if(!empty($new_start_en)){
+                                 if($new_start_en!= $oldv_en){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_en.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_en.':00:00+08:00</m:timeIntervalEnd>
@@ -1888,6 +1912,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
@@ -2005,6 +2030,8 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_dr = $dr_start_hour;
                             if(!empty($new_start_dr)){
+
+                                if($new_start_dr!= $oldv_dr){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
@@ -2019,6 +2046,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
@@ -2226,6 +2254,7 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_en = $en_start_hour;
                             if(!empty($new_start_en)){
+                                 if($new_start_en!= $oldv_en){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_en.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_en.':00:00+08:00</m:timeIntervalEnd>
@@ -2240,6 +2269,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                            }
 
                             }
 
@@ -2372,6 +2402,7 @@ class Masterfile extends CI_Controller {
                            */
                             $oldv_dr = $dr_start_hour;
                             if(!empty($new_start_dr)){
+                                  if($new_start_dr!= $oldv_dr){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr.':00:00+08:00</m:timeIntervalEnd>
@@ -2386,6 +2417,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                             }
 
                             }
 
@@ -2496,6 +2528,7 @@ class Masterfile extends CI_Controller {
 
                      
                             if(!empty($new_start_dr_set2)){
+                                  if($new_start_dr_set2!= $oldv_dr_set2){
                                 $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $new_start_dr_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$oldv_dr_set2.':00:00+08:00</m:timeIntervalEnd>
@@ -2510,6 +2543,7 @@ class Masterfile extends CI_Controller {
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                                }
 
                             }
 
