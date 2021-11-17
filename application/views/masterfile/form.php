@@ -73,7 +73,7 @@
 
                                             <div class="col-lg-6">
                                                 <p class="margin-b0">DR Default Price:</p>
-                                                <input type="number" class="form-control" name="dr_default_price">
+                                                <input type="number" class="form-control" step="any" name="dr_default_price">
                                             </div>
                                         </div>
                                     </div> 
@@ -106,8 +106,8 @@
                                             </thead>
                                                  <tbody>
                                                 <tr>
-                                                    <td><input type="number" class="form-control" name="start1" min='1' max='24'></td>
-                                                    <td><input type="number" class="form-control" name="end1" min='1' max='24'></td>
+                                                    <td><input type="number" class="form-control" name="start1" min='0' max='24'></td>
+                                                    <td><input type="number" class="form-control" name="end1" min='0' max='24'></td>
                                                     <td><input type="number" class="form-control" name="price1"></td>
                                                     <td align="center">
                                                         <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en')"><i class="mdi mdi-plus"></i></a>
@@ -144,8 +144,8 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="en_start_en03_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="en_end_en03_1" min='1' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_start_en03_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_end_en03_1" min='0' max='24'></td>
                                                             <td><input type="number" class="form-control" name="en_price_en03_1"></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en')"><i class="mdi mdi-plus"></i></a>
@@ -174,9 +174,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="dr_start_set1_1" id="dr_start1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_end_set1_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_price_set1_1"></td>
+                                                            <td><input type="number" class="form-control" name="dr_start_set1_1" id="dr_start1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_end_set1_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_price_set1_1" step="any" ></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('dr_set1')"><i class="mdi mdi-plus"></i></a>
                                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="removeFields('dr_set1')"><i class="mdi mdi-window-close"></i></a>
@@ -200,9 +200,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="dr_start_set2_1"  min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_end_set2_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_price_set2_1"></td>
+                                                            <td><input type="number" class="form-control" name="dr_start_set2_1"  min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_end_set2_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_price_set2_1" step="any" ></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('dr_set2')"><i class="mdi mdi-plus"></i></a>
                                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="removeFields('dr_set2')"><i class="mdi mdi-window-close"></i></a>
@@ -236,8 +236,8 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="en_start_04int1_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="en_end_04int1_1" min='1' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_start_04int1_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_end_04int1_1" min='0' max='24'></td>
                                                             <td><input type="number" class="form-control" name="en_price_04int1_1"></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en04_int1')"><i class="mdi mdi-plus"></i></a>
@@ -264,9 +264,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="dr_start_04int1_1" id="dr_start1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_end_04int1_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_price_04int1_1"></td>
+                                                            <td><input type="number" class="form-control" name="dr_start_04int1_1" id="dr_start1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_end_04int1_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_price_04int1_1" step="any" ></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('dr04_int1')"><i class="mdi mdi-plus"></i></a>
                                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="removeFields('dr04_int1')"><i class="mdi mdi-window-close"></i></a>
@@ -300,8 +300,8 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="en_start_04int2_1" id="en_start1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="en_end_04int2_1" min='1' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_start_04int2_1" id="en_start1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_end_04int2_1" min='0' max='24'></td>
                                                             <td><input type="number" class="form-control" name="en_price_04int2_1"></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en04_int2')"><i class="mdi mdi-plus"></i></a>
@@ -330,9 +330,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="dr_start_int2s1_1" id="dr_start1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_end_int2s1_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_price_int2s1_1"></td>
+                                                            <td><input type="number" class="form-control" name="dr_start_int2s1_1" id="dr_start1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_end_int2s1_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_price_int2s1_1" step="any" ></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('dr04_int2s1')"><i class="mdi mdi-plus"></i></a>
                                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="removeFields('dr04_int2s1')"><i class="mdi mdi-window-close"></i></a>
@@ -356,9 +356,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><input type="number" class="form-control" name="dr_start_int2s2_1"  min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_end_int2s2_1" min='1' max='24'></td>
-                                                            <td><input type="number" class="form-control" name="dr_price_int2s2_1"></td>
+                                                            <td><input type="number" class="form-control" name="dr_start_int2s2_1"  min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_end_int2s2_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="dr_price_int2s2_1" step="any" ></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('dr04_int2s2')"><i class="mdi mdi-plus"></i></a>
                                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="removeFields('dr04_int2s2')"><i class="mdi mdi-window-close"></i></a>
@@ -403,7 +403,7 @@
 
              var rowCount_a = $('#myTable tbody tr').length;
             var ct_a=rowCount_a+1;
-            markup = "<tr><td><input type='number' class='form-control' name='start"+ct_a+"' min='1' max='24'></td><td><input type='number' class='form-control' name='end"+ct_a+"' min='1' max='24'></td><td><input type='number' class='form-control' name='price"+ct_a+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='start"+ct_a+"' min='0' max='24'></td><td><input type='number' class='form-control' name='end"+ct_a+"' min='0' max='24'></td><td><input type='number' class='form-control' name='price"+ct_a+"'></td></tr>";
             tableBody = $("#myTable tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_a;
@@ -411,7 +411,7 @@
 
              var rowCount_03 = $('#myTable1_03 tbody tr').length;
             var ct_03=rowCount_03+1;
-            markup = "<tr><td><input type='number' class='form-control' name='en_start_en03_"+ct_03+"' min='1' max='24'></td><td><input type='number' class='form-control' name='en_end_en03_"+ct_03+"' min='1' max='24'></td><td><input type='number' class='form-control' name='en_price_en03_"+ct_03+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='en_start_en03_"+ct_03+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_en03_"+ct_03+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_price_en03_"+ct_03+"'></td></tr>";
             tableBody = $("#myTable1_03 tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_03;
@@ -422,7 +422,7 @@
 
             var rowCount_04in1 = $('#myTable1_interval1 tbody tr').length;
             var ct_04=rowCount_04in1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int1_"+ct_04+"' min='1' max='24'></td><td><input type='number' class='form-control' name='en_end_04int1_"+ct_04+"' min='1' max='24'></td><td><input type='number' class='form-control' name='en_price_04int1_"+ct_04+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int1_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_04int1_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_price_04int1_"+ct_04+"'></td></tr>";
             tableBody = $("#myTable1_interval1 tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_04;
@@ -433,7 +433,7 @@
 
             var rowCount_04in2 = $('#myTable1_04_int2 tbody tr').length;
             var ct_04=rowCount_04in2+1;
-            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int2_"+ct_04+"' min='1' max='24'></td><td><input type='number' class='form-control' name='en_end_04int2_"+ct_04+"' min='1' max='24'></td><td><input type='number' class='form-control' name='en_price_04int2_"+ct_04+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int2_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_04int2_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_price_04int2_"+ct_04+"'></td></tr>";
             tableBody = $("#myTable1_04_int2 tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_04;
@@ -446,7 +446,7 @@
             
             var rowCount_set1 = $('#myTable1_04int2_set1 tbody tr').length;
             var ct1=rowCount_set1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s1_"+ct1+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s1_"+ct1+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s1_"+ct1+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s1_"+ct1+"'></td></tr>";
             tableBody = $("#myTable1_04int2_set1 tbody");
             tableBody.append(markup);
             document.getElementById("count_set1").value = ct1;
@@ -457,7 +457,7 @@
             
             var rowCount_set1 = $('#myTable1_04int2_set2 tbody tr').length;
             var ct1=rowCount_set1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s2_"+ct1+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s2_"+ct1+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s2_"+ct1+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s2_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s2_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s2_"+ct1+"'></td></tr>";
             tableBody = $("#myTable1_04int2_set2 tbody");
             tableBody.append(markup);
             document.getElementById("count_set2").value = ct1;
@@ -469,7 +469,7 @@
             
             var rowCount_set1 = $('#myTable2_set1 tbody tr').length;
             var ct1=rowCount_set1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_set1_"+ct1+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_end_set1_"+ct1+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_price_set1_"+ct1+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_set1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_set1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_set1_"+ct1+"' step='any' ></td></tr>";
             tableBody = $("#myTable2_set1 tbody");
             tableBody.append(markup);
             document.getElementById("count_set1").value = ct1;
@@ -480,7 +480,7 @@
             
             var rowCount_set2 = $('#myTable2_set2 tbody tr').length;
             var ct2=rowCount_set2+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_set2_"+ct2+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_end_set2_"+ct2+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_price_set2_"+ct2+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_set2_"+ct2+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_set2_"+ct2+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_set2_"+ct2+"' step='any'></td></tr>";
             tableBody = $("#myTable2_set2 tbody");
             tableBody.append(markup);
             document.getElementById("count_set2").value = ct2;
@@ -492,7 +492,7 @@
             
             var rowCount_set2 = $('#myTable1_interval1_dr tbody tr').length;
             var ct2=rowCount_set2+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_04int1_"+ct2+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_end_04int1_"+ct2+"' min='1' max='24'></td><td><input type='number' class='form-control' name='dr_price_04int1_"+ct2+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_04int1_"+ct2+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_04int1_"+ct2+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_04int1_"+ct2+"' step='any'></td></tr>";
             tableBody = $("#myTable1_interval1_dr tbody");
             tableBody.append(markup);
             document.getElementById("count2").value = ct2;
