@@ -446,7 +446,7 @@
             
             var rowCount_set1 = $('#myTable1_04int2_set1 tbody tr').length;
             var ct1=rowCount_set1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s1_"+ct1+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s1_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s1_"+ct1+"' step='any' ></td></tr>";
             tableBody = $("#myTable1_04int2_set1 tbody");
             tableBody.append(markup);
             document.getElementById("count_set1").value = ct1;
@@ -457,7 +457,7 @@
             
             var rowCount_set1 = $('#myTable1_04int2_set2 tbody tr').length;
             var ct1=rowCount_set1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s2_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s2_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s2_"+ct1+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='dr_start_int2s2_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_end_int2s2_"+ct1+"' min='0' max='24'></td><td><input type='number' class='form-control' name='dr_price_int2s2_"+ct1+"'  step='any' ></td></tr>";
             tableBody = $("#myTable1_04int2_set2 tbody");
             tableBody.append(markup);
             document.getElementById("count_set2").value = ct1;

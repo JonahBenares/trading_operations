@@ -119,6 +119,7 @@ class Masterfile extends CI_Controller {
 
                     $end1 = $this->input->post('start1');
 
+                    if($end1!=0){
                       $xmlString .= '<m:BidSchedule>
                         <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                         <m:timeIntervalEnd>'.$start_date.'T'.$end1.':00:00+08:00</m:timeIntervalEnd>
@@ -133,6 +134,7 @@ class Masterfile extends CI_Controller {
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
                        </m:BidSchedule>';
+                   }
 
 
 
@@ -238,8 +240,15 @@ class Masterfile extends CI_Controller {
                  </m:GeneratingBid>
                 </m:MessagePayload>
                 </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+
+$dom = new DOMDocument;
+$dom->preserveWhiteSpace = FALSE;
+$dom->loadXML($xmlString);
+
+//Save XML as a file
+$dom->save('../../../XMLExport/cenpri01.xml');     
+    /*    $this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
     }
 
 
@@ -309,7 +318,7 @@ class Masterfile extends CI_Controller {
                 } else {
 
                     $en_end1 = $this->input->post('start1');
-
+                 if($en_end1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$en_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -324,6 +333,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
 
@@ -430,8 +440,15 @@ class Masterfile extends CI_Controller {
              </m:GeneratingBid>
             </m:MessagePayload>
             </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+        /*$this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
+
+        $dom = new DOMDocument;
+$dom->preserveWhiteSpace = FALSE;
+$dom->loadXML($xmlString);
+
+//Save XML as a file
+$dom->save('../../../XMLExport/cenpri02.xml');
     }
 
     public function generate_xml_03(){
@@ -539,7 +556,7 @@ class Masterfile extends CI_Controller {
                 } else {
 
                     $en_end1 = $this->input->post('en_start_en03_1');
-
+                 if($en_end1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$en_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -554,6 +571,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $en_end1 = $this->input->post('en_start_en03_1');
@@ -675,7 +693,7 @@ class Masterfile extends CI_Controller {
 
 
                    $dr_end_set1_1 = $this->input->post('dr_start_set1_1');
-
+                if($dr_end_set1_1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set1_1.':00:00+08:00</m:timeIntervalEnd>
@@ -690,6 +708,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $dr_end_set1_1 = $this->input->post('dr_start_set1_1');
@@ -800,7 +819,7 @@ class Masterfile extends CI_Controller {
 
                        } else {
                         $dr_end_set2_1 = $this->input->post('dr_start_set2_1');
-
+                if($dr_end_set2_1!=20){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T20:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
@@ -815,6 +834,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $dr_end_set2_1 = $this->input->post('dr_start_set2_1');
@@ -920,8 +940,14 @@ class Masterfile extends CI_Controller {
                  </m:GeneratingBid>
                 </m:MessagePayload>
                 </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+       /* $this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
+        $dom = new DOMDocument;
+$dom->preserveWhiteSpace = FALSE;
+$dom->loadXML($xmlString);
+
+//Save XML as a file
+$dom->save('../../../XMLExport/cenpri03.xml');
     }
 
 
@@ -1010,7 +1036,7 @@ class Masterfile extends CI_Controller {
                 } else {
 
                     $en_end1 = $this->input->post('en_start_04int1_1');
-
+                     if($en_end1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$en_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -1025,6 +1051,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $en_end1 = $this->input->post('en_start_04int1_1');
@@ -1144,7 +1171,7 @@ class Masterfile extends CI_Controller {
 
 
                     $dr_end1 = $this->input->post('dr_start_04int1_1');
-
+                     if($dr_end1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -1159,6 +1186,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $dr_end1 = $this->input->post('dr_start_04int1_1');
@@ -1261,8 +1289,14 @@ class Masterfile extends CI_Controller {
                  </m:GeneratingBid>
                 </m:MessagePayload>
                 </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+      /*  $this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
+        $dom = new DOMDocument;
+$dom->preserveWhiteSpace = FALSE;
+$dom->loadXML($xmlString);
+
+//Save XML as a file
+$dom->save('../../../XMLExport/cenpri04_int1.xml');
     }
 
 
@@ -1369,7 +1403,7 @@ class Masterfile extends CI_Controller {
                 } else {
 
                     $en_end1 = $this->input->post('en_start_04int2_1');
-
+                    if($en_end1!=0){
                              $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$en_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -1384,6 +1418,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
                    
                     $index=0;
                     $oldv_en=0;
@@ -1515,7 +1550,7 @@ class Masterfile extends CI_Controller {
 
 
                    $dr_end_set1_1 = $this->input->post('dr_start_int2s1_1');
-
+                    if($dr_end_set1_1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set1_1.':00:00+08:00</m:timeIntervalEnd>
@@ -1530,6 +1565,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $dr_end_set1_1 = $this->input->post('dr_start_int2s1_1');
@@ -1641,7 +1677,7 @@ class Masterfile extends CI_Controller {
 
 
                      $dr_end_set2_1 = $this->input->post('dr_start_int2s2_1');
-
+                     if($dr_end_set2_1!=20){
                          $xmlString .= '<m:BidSchedule>
                             <m:timeIntervalStart>'.$start_date.'T20:00:00+08:00</m:timeIntervalStart>
                             <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
@@ -1656,6 +1692,7 @@ class Masterfile extends CI_Controller {
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
+                       }
                         
                     $index_set2=0;
                     $oldv_dr_set2=0;
@@ -1759,8 +1796,14 @@ class Masterfile extends CI_Controller {
                  </m:GeneratingBid>
                 </m:MessagePayload>
                 </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+       /* $this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
+        $dom = new DOMDocument;
+    $dom->preserveWhiteSpace = FALSE;
+    $dom->loadXML($xmlString);
+
+    //Save XML as a file
+    $dom->save('../../../XMLExport/cenpri04_int2.xml');
     }
 
 
@@ -1849,7 +1892,7 @@ class Masterfile extends CI_Controller {
                 } else {
 
                     $en_end1 = $this->input->post('en_start_04int1_1');
-
+                    if($en_end1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$en_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -1864,6 +1907,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
 
 
                      $en_end1 = $this->input->post('en_start_04int1_1');
@@ -1983,7 +2027,7 @@ class Masterfile extends CI_Controller {
 
 
                     $dr_end1 = $this->input->post('dr_start_04int1_1');
-
+                     if($dr_end1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -1998,7 +2042,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
-
+               }
 
                      $dr_end1 = $this->input->post('dr_start_04int1_1');
                     $index=0;
@@ -2101,8 +2145,14 @@ class Masterfile extends CI_Controller {
                  </m:GeneratingBid>
                 </m:MessagePayload>
                 </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+        /*$this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
+        $dom = new DOMDocument;
+        $dom->preserveWhiteSpace = FALSE;
+        $dom->loadXML($xmlString);
+
+        //Save XML as a file
+        $dom->save('../../../XMLExport/cenpri05_int1.xml');
     }
 
 
@@ -2209,7 +2259,7 @@ class Masterfile extends CI_Controller {
                 } else {
 
                     $en_end1 = $this->input->post('en_start_04int2_1');
-
+                     if($en_end1!=0){
                              $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$en_end1.':00:00+08:00</m:timeIntervalEnd>
@@ -2224,6 +2274,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
+               }
                    
                     $index=0;
                     $oldv_en=0;
@@ -2355,7 +2406,7 @@ class Masterfile extends CI_Controller {
 
 
                    $dr_end_set1_1 = $this->input->post('dr_start_int2s1_1');
-
+                    if($dr_end_set1_1!=0){
                     $xmlString .= '<m:BidSchedule>
                     <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                     <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set1_1.':00:00+08:00</m:timeIntervalEnd>
@@ -2370,7 +2421,7 @@ class Masterfile extends CI_Controller {
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
                    </m:BidSchedule>';
-
+               }
 
                      $dr_end_set1_1 = $this->input->post('dr_start_int2s1_1');
                     $index=0;
@@ -2481,7 +2532,7 @@ class Masterfile extends CI_Controller {
 
 
                      $dr_end_set2_1 = $this->input->post('dr_start_int2s2_1');
-
+                     if($dr_end_set2_1!=20){
                          $xmlString .= '<m:BidSchedule>
                             <m:timeIntervalStart>'.$start_date.'T20:00:00+08:00</m:timeIntervalStart>
                             <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_set2_1.':00:00+08:00</m:timeIntervalEnd>
@@ -2496,7 +2547,7 @@ class Masterfile extends CI_Controller {
                              </m:CurveSchedData>
                             </m:BidPriceCurve>
                            </m:BidSchedule>';
-                        
+                        }
                     $index_set2=0;
                     $oldv_dr_set2=0;
                     for($x2=1;$x2<=$count_set2;$x2++){
@@ -2599,8 +2650,18 @@ class Masterfile extends CI_Controller {
                  </m:GeneratingBid>
                 </m:MessagePayload>
                 </m:RawBidSet>';
-        $this->output->set_content_type('text/xml');
-        $this->output->set_output($xmlString);
+
+
+  
+        /*$this->output->set_content_type('text/xml');
+        $this->output->set_output($xmlString);*/
+
+          $dom = new DOMDocument;
+        $dom->preserveWhiteSpace = FALSE;
+        $dom->loadXML($xmlString);
+
+        //Save XML as a file
+        $dom->save('../../../XMLExport/cenpri05_int2.xml');
     }
 
 }
