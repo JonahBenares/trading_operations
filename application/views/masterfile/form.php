@@ -72,7 +72,7 @@
                                             </div>
 
                                             <div class="col-lg-6">
-                                                <p class="margin-b0">DR Default Price:</p>
+                                                <p class="margin-b0">DR Capacity (MW):</p>
                                                 <input type="number" class="form-control" step="any" name="dr_default_price">
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@
                                                         <tr>
                                                             <td width="29%"><p>Start Hour</p></td>
                                                             <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
+                                                            <td width="29%"><p>Capacity (MW)</p></td>
                                                             <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
@@ -194,7 +194,7 @@
                                                         <tr>
                                                             <td width="29%"><p>Start Hour</p></td>
                                                             <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
+                                                            <td width="29%"><p>Capacity (MW)</p></td>
                                                             <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
@@ -258,7 +258,7 @@
                                                         <tr>
                                                             <td width="29%"><p>Start Hour</p></td>
                                                             <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
+                                                            <td width="29%"><p>Capacity (MW)</p></td>
                                                             <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
@@ -324,7 +324,7 @@
                                                         <tr>
                                                             <td width="29%"><p>Start Hour</p></td>
                                                             <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
+                                                            <td width="29%"><p>Capacity (MW)</p></td>
                                                             <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
@@ -350,7 +350,7 @@
                                                         <tr>
                                                             <td width="29%"><p>Start Hour</p></td>
                                                             <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
+                                                            <td width="29%"><p>Capacity (MW)</p></td>
                                                             <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>

@@ -46,7 +46,11 @@ class Masterfile extends CI_Controller {
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $default_price = $this->input->post('en_default_price');
-
+          if(empty($this->input->post('dr_default_price'))){
+             $dr_default_price = 0;
+        } else {
+             $dr_default_price = $this->input->post('dr_default_price');
+        }
 
         $count = $this->input->post('count');
 
@@ -109,7 +113,7 @@ class Masterfile extends CI_Controller {
                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>4.5</m:xAxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -129,7 +133,7 @@ class Masterfile extends CI_Controller {
                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                          </m:CurveSchedData>
                          <m:CurveSchedData>
-                          <m:xAxisData>4.5</m:xAxisData>
+                          <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
@@ -180,7 +184,7 @@ class Masterfile extends CI_Controller {
                                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                          </m:CurveSchedData>
                                          <m:CurveSchedData>
-                                          <m:xAxisData>4.5</m:xAxisData>
+                                          <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                          </m:CurveSchedData>
                                         </m:BidPriceCurve>
@@ -190,6 +194,7 @@ class Masterfile extends CI_Controller {
                             }
 
 
+                            if($end_hour != "00"){
                                $xmlString .= '<m:BidSchedule>
                                     <m:timeIntervalStart>'.$start_date.'T'. $start_hour.':00:00+08:00</m:timeIntervalStart>
                                     <m:timeIntervalEnd>'.$start_date.'T'.$end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -199,18 +204,34 @@ class Masterfile extends CI_Controller {
                                       <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>4.5</m:xAxisData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                       <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
                                    </m:BidSchedule>';
+                            } else {
+                                 $xmlString .= '<m:BidSchedule>
+                                    <m:timeIntervalStart>'.$start_date.'T'. $start_hour.':00:00+08:00</m:timeIntervalStart>
+                                    <m:timeIntervalEnd>'.$end_date.'T'.$end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                    <m:BidPriceCurve>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>0</m:xAxisData>
+                                      <m:y1AxisData>'.$price_change.'</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                     <m:CurveSchedData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:y1AxisData>'.$price_change.'</m:y1AxisData>
+                                     </m:CurveSchedData>
+                                    </m:BidPriceCurve>
+                                   </m:BidSchedule>';
+                            }
                             
 
                     }
 
                      $last = $this->input->post('end'.$count);
 
-
+                     if($last!="00"){
                          $xmlString .= '<m:BidSchedule>
                                     <m:timeIntervalStart>'.$start_date.'T'. $last.':00:00+08:00</m:timeIntervalStart>
                                     <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -220,11 +241,12 @@ class Masterfile extends CI_Controller {
                                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>4.5</m:xAxisData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
                                    </m:BidSchedule>';
+                     }
         
                }
 
@@ -246,7 +268,8 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($xmlString);
 
 //Save XML as a file
-$dom->save('../../../XMLExport/cenpri01.xml');     
+$now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');     
     /*    $this->output->set_content_type('text/xml');
         $this->output->set_output($xmlString);*/
     }
@@ -309,7 +332,7 @@ $dom->save('../../../XMLExport/cenpri01.xml');
                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                  </m:CurveSchedData>
                  <m:CurveSchedData>
-                  <m:xAxisData>4.5</m:xAxisData>
+                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                  </m:CurveSchedData>
                 </m:BidPriceCurve>
@@ -328,7 +351,7 @@ $dom->save('../../../XMLExport/cenpri01.xml');
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>4.5</m:xAxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -381,7 +404,7 @@ $dom->save('../../../XMLExport/cenpri01.xml');
                                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>4.5</m:xAxisData>
+                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
@@ -389,7 +412,7 @@ $dom->save('../../../XMLExport/cenpri01.xml');
                                }
                             }
 
-
+                        if($end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -399,17 +422,33 @@ $dom->save('../../../XMLExport/cenpri01.xml');
                                   <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.5</m:xAxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                   <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                        } else {
+                            $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>'.$price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>'.$price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                        }
 
                     }
 
                      $last = $this->input->post('end'.$count);
 
-
+                     if($last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -419,11 +458,12 @@ $dom->save('../../../XMLExport/cenpri01.xml');
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.5</m:xAxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                    }
         
                }
 
@@ -448,7 +488,9 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($xmlString);
 
 //Save XML as a file
-$dom->save('../../../XMLExport/cenpri02.xml');
+$now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');     
+
     }
 
     public function generate_xml_03(){
@@ -547,7 +589,7 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>4.5</m:xAxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -566,7 +608,7 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>4.5</m:xAxisData>
+                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -615,7 +657,7 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.5</m:xAxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -624,6 +666,7 @@ $dom->save('../../../XMLExport/cenpri02.xml');
 
                             }
 
+                          if($en_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -633,17 +676,33 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.5</m:xAxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                            $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $en_last = $this->input->post('en_end_en03_'.$count);
 
-
+                     if($en_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -653,11 +712,12 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>4.5</m:xAxisData>
+                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                        }
 
         
                }
@@ -760,6 +820,7 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                                  }
 
                             }
+
 
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour.':00:00+08:00</m:timeIntervalStart>
@@ -886,6 +947,7 @@ $dom->save('../../../XMLExport/cenpri02.xml');
 
                             }
 
+                         if($dr_end_hour_set2 != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
@@ -900,6 +962,23 @@ $dom->save('../../../XMLExport/cenpri02.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                            $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour_set2.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+
+                           }
 
                     }
 
@@ -947,7 +1026,10 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($xmlString);
 
 //Save XML as a file
-$dom->save('../../../XMLExport/cenpri03.xml');
+//$dom->save('../../../XMLExport/cenpri03.xml');
+
+$now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U03.xml');  
     }
 
 
@@ -1104,6 +1186,7 @@ $dom->save('../../../XMLExport/cenpri03.xml');
 
                             }
 
+                           if($en_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -1118,10 +1201,28 @@ $dom->save('../../../XMLExport/cenpri03.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                             $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $en_last = $this->input->post('en_end_04int1_'.$count);
+
+                     if($en_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -1136,6 +1237,8 @@ $dom->save('../../../XMLExport/cenpri03.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+
+                           }
 
         
                }
@@ -1238,6 +1341,7 @@ $dom->save('../../../XMLExport/cenpri03.xml');
 
                             }
 
+                           if($dr_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -1252,12 +1356,28 @@ $dom->save('../../../XMLExport/cenpri03.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else{
+                            $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $dr_last = $this->input->post('dr_end_04int1_'.$count_dr);
 
-
+                      if($dr_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -1272,6 +1392,8 @@ $dom->save('../../../XMLExport/cenpri03.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+
+                        }
 
                 } //end else
  
@@ -1296,7 +1418,10 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($xmlString);
 
 //Save XML as a file
-$dom->save('../../../XMLExport/cenpri04_int1.xml');
+//$dom->save('../../../XMLExport/cenpri04_int1.xml');
+
+$now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');  
     }
 
 
@@ -1468,6 +1593,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
 
                             }
 
+                         if($en_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -1482,12 +1608,28 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                             $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $en_last = $this->input->post('en_end_04int2_'.$count);
 
-
+                     if($en_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -1502,6 +1644,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                        }
 
         
                }
@@ -1744,6 +1887,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
 
                             }
 
+                         if($dr_end_hour_set2 != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
@@ -1758,12 +1902,28 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                            $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour_set2.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $dr_last_set2 = $this->input->post('dr_end_int2s2_'.$count_set2);
 
-
+                      if($dr_last_set2!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -1778,6 +1938,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                            }
 
 
                 } //end else
@@ -1803,7 +1964,10 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
     $dom->loadXML($xmlString);
 
     //Save XML as a file
-    $dom->save('../../../XMLExport/cenpri04_int2.xml');
+   // $dom->save('../../../XMLExport/cenpri04_int2.xml');
+
+    $now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');  
     }
 
 
@@ -1959,7 +2123,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                 }
 
                             }
-
+                        if($en_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -1974,10 +2138,28 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                             $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $en_last = $this->input->post('en_end_04int1_'.$count);
+
+                      if($en_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -1992,6 +2174,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                        }
 
         
                }
@@ -2094,6 +2277,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
 
                             }
 
+                        if($dr_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -2108,12 +2292,28 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                                $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_price_change.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $dr_last = $this->input->post('dr_end_04int1_'.$count_dr);
 
-
+                     if($dr_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -2128,6 +2328,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                            }
 
                 } //end else
  
@@ -2152,7 +2353,10 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
         $dom->loadXML($xmlString);
 
         //Save XML as a file
-        $dom->save('../../../XMLExport/cenpri05_int1.xml');
+        //$dom->save('../../../XMLExport/cenpri05_int1.xml');
+
+        $now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');  
     }
 
 
@@ -2324,6 +2528,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
 
                             }
 
+                        if($en_end_hour != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
@@ -2338,12 +2543,28 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                                $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $en_start_hour.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$en_end_hour.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $en_last = $this->input->post('en_end_04int2_'.$count);
 
-
+                     if($en_last!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $en_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -2358,6 +2579,8 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+
+                        }
 
         
                }
@@ -2598,6 +2821,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
 
                             }
 
+                        if($dr_end_hour_set2 != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
@@ -2612,12 +2836,28 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           } else {
+                             $xmlString .= '<m:BidSchedule>
+                                <m:timeIntervalStart>'.$start_date.'T'. $dr_start_hour_set2.':00:00+08:00</m:timeIntervalStart>
+                                <m:timeIntervalEnd>'.$end_date.'T'.$dr_end_hour_set2.':00:00+08:00</m:timeIntervalEnd>
+                                <m:BidPriceCurve>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>0</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                 <m:CurveSchedData>
+                                  <m:xAxisData>'.$dr_price_change_set2.'</m:xAxisData>
+                                  <m:y1AxisData>0</m:y1AxisData>
+                                 </m:CurveSchedData>
+                                </m:BidPriceCurve>
+                               </m:BidSchedule>';
+                           }
 
                     }
 
                      $dr_last_set2 = $this->input->post('dr_end_int2s2_'.$count_set2);
 
-
+                    if($dr_last_set2!="00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -2632,6 +2872,7 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           }
 
 
                 } //end else
@@ -2661,7 +2902,9 @@ $dom->save('../../../XMLExport/cenpri04_int1.xml');
         $dom->loadXML($xmlString);
 
         //Save XML as a file
-        $dom->save('../../../XMLExport/cenpri05_int2.xml');
+       // $dom->save('../../../XMLExport/cenpri05_int2.xml');
+        $now = date('Ymd');
+$dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');  
     }
 
 }
