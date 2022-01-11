@@ -46,11 +46,7 @@ class Masterfile extends CI_Controller {
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $default_price = $this->input->post('en_default_price');
-          if(empty($this->input->post('dr_default_price'))){
-             $dr_default_price = 0;
-        } else {
-             $dr_default_price = $this->input->post('dr_default_price');
-        }
+      
 
         $count = $this->input->post('count');
 
@@ -113,7 +109,7 @@ class Masterfile extends CI_Controller {
                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:xAxisData>4.5</m:xAxisData>
                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -133,7 +129,7 @@ class Masterfile extends CI_Controller {
                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                          </m:CurveSchedData>
                          <m:CurveSchedData>
-                          <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                          <m:xAxisData>4.5</m:xAxisData>
                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                          </m:CurveSchedData>
                         </m:BidPriceCurve>
@@ -151,6 +147,7 @@ class Masterfile extends CI_Controller {
                         $start_hour = $this->input->post('start'.$x);
                         $end_hour = $this->input->post('end'.$x);
                         $price_change = $this->input->post('price'.$x);
+                        $capacity = $this->input->post('capacity'.$x);
 
                           if($index==0) {
                             $oldv = $start_hour;
@@ -184,7 +181,7 @@ class Masterfile extends CI_Controller {
                                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                          </m:CurveSchedData>
                                          <m:CurveSchedData>
-                                          <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                          <m:xAxisData>4.5</m:xAxisData>
                                           <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                          </m:CurveSchedData>
                                         </m:BidPriceCurve>
@@ -204,7 +201,7 @@ class Masterfile extends CI_Controller {
                                       <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:xAxisData>'.$capacity.'</m:xAxisData>
                                       <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
@@ -219,7 +216,7 @@ class Masterfile extends CI_Controller {
                                       <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:xAxisData>'.$capacity.'</m:xAxisData>
                                       <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
@@ -241,7 +238,7 @@ class Masterfile extends CI_Controller {
                                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:xAxisData>4.5</m:xAxisData>
                                       <m:y1AxisData>'.$default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
@@ -332,7 +329,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                  </m:CurveSchedData>
                  <m:CurveSchedData>
-                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                  <m:xAxisData>4.5</m:xAxisData>
                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                  </m:CurveSchedData>
                 </m:BidPriceCurve>
@@ -351,7 +348,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:xAxisData>4.5</m:xAxisData>
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -369,6 +366,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                         $start_hour = $this->input->post('start'.$x);
                         $end_hour = $this->input->post('end'.$x);
                         $price_change = $this->input->post('price'.$x);
+                        $capacity = $this->input->post('capacity'.$x);
 
                           if($index==0) {
                             $oldv = $start_hour;
@@ -404,7 +402,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                      <m:CurveSchedData>
-                                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                      <m:xAxisData>4.5</m:xAxisData>
                                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                      </m:CurveSchedData>
                                     </m:BidPriceCurve>
@@ -422,7 +420,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                                   <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -437,7 +435,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                                   <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -458,7 +456,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>4.5</m:xAxisData>
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -502,13 +500,6 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
        
-
-        if(empty($this->input->post('dr_default_price'))){
-             $dr_default_price = 0;
-        } else {
-             $dr_default_price = $this->input->post('dr_default_price');
-        }
-
 
         $count = $this->input->post('count');
         $count_dr = $this->input->post('count2');
@@ -589,7 +580,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:xAxisData>4.5</m:xAxisData>
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -608,7 +599,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                      <m:CurveSchedData>
-                      <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                      <m:xAxisData>4.5</m:xAxisData>
                       <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                      </m:CurveSchedData>
                     </m:BidPriceCurve>
@@ -624,6 +615,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                         $en_start_hour = $this->input->post('en_start_en03_'.$x);
                         $en_end_hour = $this->input->post('en_end_en03_'.$x);
                         $en_price_change = $this->input->post('en_price_en03_'.$x);
+                         $capacity = $this->input->post('en_cap_en03_'.$x);
 
                           if($index==0) {
                             $oldv_en = $en_start_hour;
@@ -657,7 +649,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>4.5</m:xAxisData>
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -676,7 +668,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -691,7 +683,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -712,7 +704,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>'.$dr_default_price.'</m:xAxisData>
+                                  <m:xAxisData>4.5</m:xAxisData>
                                   <m:y1AxisData>'.$en_default_price.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -1145,6 +1137,8 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U03.xml');
                         $en_start_hour = $this->input->post('en_start_04int1_'.$x);
                         $en_end_hour = $this->input->post('en_end_04int1_'.$x);
                         $en_price_change = $this->input->post('en_price_04int1_'.$x);
+                         $capacity = $this->input->post('en_cap_04int1_'.$x);
+
 
                           if($index==0) {
                             $oldv_en = $en_start_hour;
@@ -1196,7 +1190,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U03.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -1211,7 +1205,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U03.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -1552,6 +1546,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                         $en_start_hour = $this->input->post('en_start_04int2_'.$x);
                         $en_end_hour = $this->input->post('en_end_04int2_'.$x);
                         $en_price_change = $this->input->post('en_price_04int2_'.$x);
+                         $capacity = $this->input->post('en_cap_04int2_'.$x);
 
                           if($index==0) {
                             $oldv_en = $en_start_hour;
@@ -1603,7 +1598,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -1618,7 +1613,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -2083,6 +2078,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                         $en_start_hour = $this->input->post('en_start_04int1_'.$x);
                         $en_end_hour = $this->input->post('en_end_04int1_'.$x);
                         $en_price_change = $this->input->post('en_price_04int1_'.$x);
+                        $capacity = $this->input->post('en_cap_04int1_'.$x);
 
                           if($index==0) {
                             $oldv_en = $en_start_hour;
@@ -2133,7 +2129,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -2148,7 +2144,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -2487,6 +2483,8 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                         $en_start_hour = $this->input->post('en_start_04int2_'.$x);
                         $en_end_hour = $this->input->post('en_end_04int2_'.$x);
                         $en_price_change = $this->input->post('en_price_04int2_'.$x);
+                        $capacity = $this->input->post('en_cap_04int2_'.$x);
+
 
                           if($index==0) {
                             $oldv_en = $en_start_hour;
@@ -2538,7 +2536,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
@@ -2553,7 +2551,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                  <m:CurveSchedData>
-                                  <m:xAxisData>6.7</m:xAxisData>
+                                  <m:xAxisData>'.$capacity.'</m:xAxisData>
                                   <m:y1AxisData>'.$en_price_change.'</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>

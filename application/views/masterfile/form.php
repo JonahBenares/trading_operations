@@ -98,16 +98,18 @@
                                             <table width="100%" id='myTable' >
                                                 <thead>
                                                 <tr>
-                                                    <td width="29%"><p>Start Hour</p></td>
-                                                    <td width="29%"><p>End Hour</p></td>
-                                                    <td width="29%"><p>Price</p></td>
-                                                    <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
+                                                    <td width="25%"><p>Start Hour</p></td>
+                                                    <td width="25%"><p>End Hour</p></td>
+                                                    <td width="20%"><p>Capacity (MW)</p></td>
+                                                    <td width="20%"><p>Price</p></td>
+                                                    <td width="10%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                 </tr>
                                             </thead>
                                                  <tbody>
                                                 <tr>
                                                     <td><input type="number" class="form-control" name="start1" min='0' max='24'></td>
                                                     <td><input type="number" class="form-control" name="end1" min='0' max='24'></td>
+                                                    <td><input type="number" class="form-control" name="capacity1"></td>
                                                     <td><input type="number" class="form-control" name="price1"></td>
                                                     <td align="center">
                                                         <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en')"><i class="mdi mdi-plus"></i></a>
@@ -136,16 +138,18 @@
                                                             <td colspan="4"><b>For EN</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="29%"><p>Start Hour</p></td>
-                                                            <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
-                                                            <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
+                                                            <td width="25%"><p>Start Hour</p></td>
+                                                            <td width="25%"><p>End Hour</p></td>
+                                                            <td width="20%"><p>Capacity (MW)</p></td>
+                                                            <td width="20%"><p>Price</p></td>
+                                                            <td width="10%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td><input type="number" class="form-control" name="en_start_en03_1" min='0' max='24'></td>
                                                             <td><input type="number" class="form-control" name="en_end_en03_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_cap_en03_1"></td>
                                                             <td><input type="number" class="form-control" name="en_price_en03_1"></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en')"><i class="mdi mdi-plus"></i></a>
@@ -228,16 +232,18 @@
                                                             <td colspan="4"><b>For EN</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="29%"><p>Start Hour</p></td>
-                                                            <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
-                                                            <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
+                                                             <td width="25%"><p>Start Hour</p></td>
+                                                    <td width="25%"><p>End Hour</p></td>
+                                                    <td width="20%"><p>Capacity (MW)</p></td>
+                                                    <td width="20%"><p>Price</p></td>
+                                                    <td width="10%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td><input type="number" class="form-control" name="en_start_04int1_1" min='0' max='24'></td>
                                                             <td><input type="number" class="form-control" name="en_end_04int1_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_cap_04int1_1"></td>
                                                             <td><input type="number" class="form-control" name="en_price_04int1_1"></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en04_int1')"><i class="mdi mdi-plus"></i></a>
@@ -292,16 +298,18 @@
                                                             <td colspan="4"><b>For EN</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="29%"><p>Start Hour</p></td>
-                                                            <td width="29%"><p>End Hour</p></td>
-                                                            <td width="29%"><p>Price</p></td>
-                                                            <td width="13%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
+                                                            <td width="25%"><p>Start Hour</p></td>
+                                                    <td width="25%"><p>End Hour</p></td>
+                                                    <td width="20%"><p>Capacity (MW)</p></td>
+                                                    <td width="20%"><p>Price</p></td>
+                                                    <td width="10%" align="center"><p><i class="mdi mdi-view-sequential"></i></p></td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td><input type="number" class="form-control" name="en_start_04int2_1" id="en_start1" min='0' max='24'></td>
                                                             <td><input type="number" class="form-control" name="en_end_04int2_1" min='0' max='24'></td>
+                                                            <td><input type="number" class="form-control" name="en_cap_04int2_1"></td>
                                                             <td><input type="number" class="form-control" name="en_price_04int2_1"></td>
                                                             <td align="center">
                                                                 <a href="javascript:void(0)" class="btn btn-primary btn-xs"  onclick="addFields('en04_int2')"><i class="mdi mdi-plus"></i></a>
@@ -403,7 +411,7 @@
 
              var rowCount_a = $('#myTable tbody tr').length;
             var ct_a=rowCount_a+1;
-            markup = "<tr><td><input type='number' class='form-control' name='start"+ct_a+"' min='0' max='24'></td><td><input type='number' class='form-control' name='end"+ct_a+"' min='0' max='24'></td><td><input type='number' class='form-control' name='price"+ct_a+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='start"+ct_a+"' min='0' max='24'></td><td><input type='number' class='form-control' name='end"+ct_a+"' min='0' max='24'></td><td><input type='number' class='form-control' name='capacity"+ct_a+"'></td><td><input type='number' class='form-control' name='price"+ct_a+"'></td></tr>";
             tableBody = $("#myTable tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_a;
@@ -411,7 +419,7 @@
 
              var rowCount_03 = $('#myTable1_03 tbody tr').length;
             var ct_03=rowCount_03+1;
-            markup = "<tr><td><input type='number' class='form-control' name='en_start_en03_"+ct_03+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_en03_"+ct_03+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_price_en03_"+ct_03+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='en_start_en03_"+ct_03+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_en03_"+ct_03+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_cap_en03_"+ct_03+"'></td><td><input type='number' class='form-control' name='en_price_en03_"+ct_03+"'></td></tr>";
             tableBody = $("#myTable1_03 tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_03;
@@ -422,7 +430,7 @@
 
             var rowCount_04in1 = $('#myTable1_interval1 tbody tr').length;
             var ct_04=rowCount_04in1+1;
-            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int1_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_04int1_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_price_04int1_"+ct_04+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int1_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_04int1_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_cap_04int1_"+ct_04+"'></td><td><input type='number' class='form-control' name='en_price_04int1_"+ct_04+"'></td></tr>";
             tableBody = $("#myTable1_interval1 tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_04;
@@ -433,7 +441,7 @@
 
             var rowCount_04in2 = $('#myTable1_04_int2 tbody tr').length;
             var ct_04=rowCount_04in2+1;
-            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int2_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_04int2_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_price_04int2_"+ct_04+"'></td></tr>";
+            markup = "<tr><td><input type='number' class='form-control' name='en_start_04int2_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_end_04int2_"+ct_04+"' min='0' max='24'></td><td><input type='number' class='form-control' name='en_cap_04int2_"+ct_04+"'></td><td><input type='number' class='form-control' name='en_price_04int2_"+ct_04+"'></td></tr>";
             tableBody = $("#myTable1_04_int2 tbody");
             tableBody.append(markup);
             document.getElementById("count").value = ct_04;
