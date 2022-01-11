@@ -281,11 +281,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
            $default_price = $this->input->post('en_default_price');
-          if(empty($this->input->post('dr_default_price'))){
-             $dr_default_price = 0;
-        } else {
-             $dr_default_price = $this->input->post('dr_default_price');
-        }
+      
 
         $count = $this->input->post('count');
         
