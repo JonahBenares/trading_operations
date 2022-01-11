@@ -265,7 +265,7 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($xmlString);
 
 //Save XML as a file
-$now = date('Ymd');
+$now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U01.xml');     
     /*    $this->output->set_content_type('text/xml');
         $this->output->set_output($xmlString);*/
@@ -486,7 +486,7 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($xmlString);
 
 //Save XML as a file
-$now = date('Ymd');
+$now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');     
 
     }
@@ -1020,7 +1020,7 @@ $dom->loadXML($xmlString);
 //Save XML as a file
 //$dom->save('../../../XMLExport/cenpri03.xml');
 
-$now = date('Ymd');
+$now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U03.xml');  
     }
 
@@ -1414,7 +1414,7 @@ $dom->loadXML($xmlString);
 //Save XML as a file
 //$dom->save('../../../XMLExport/cenpri04_int1.xml');
 
-$now = date('Ymd');
+$now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');  
     }
 
@@ -1961,7 +1961,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
     //Save XML as a file
    // $dom->save('../../../XMLExport/cenpri04_int2.xml');
 
-    $now = date('Ymd');
+    $now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');  
     }
 
@@ -2351,7 +2351,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
         //Save XML as a file
         //$dom->save('../../../XMLExport/cenpri05_int1.xml');
 
-        $now = date('Ymd');
+       $now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');  
     }
 
@@ -2901,7 +2901,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
 
         //Save XML as a file
        // $dom->save('../../../XMLExport/cenpri05_int2.xml');
-        $now = date('Ymd');
+        $now = date('Ymd',strtotime($start_date));
 $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');  
     }
 
