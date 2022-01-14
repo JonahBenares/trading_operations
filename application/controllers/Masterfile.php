@@ -499,7 +499,11 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
         $start_date =  date("Y-m-d",strtotime($this->input->post('start_date')));
         $end_date =  date("Y-m-d",strtotime($this->input->post('end_date')));
         $en_default_price = $this->input->post('en_default_price');
-       
+        if(empty($this->input->post('dr_default_price'))){
+             $dr_default_price = 0;
+        } else {
+             $dr_default_price = $this->input->post('dr_default_price');
+        }
 
         $count = $this->input->post('count');
         $count_dr = $this->input->post('count2');
@@ -2592,7 +2596,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                     <m:marketProductType>DR</m:marketProductType>
                    </m:MarketProduct>';
 
-                   if($count_set1==0){
+                   if($count_set1==0 && $count_set2==0){
                         $xmlString .= '<m:BidSchedule>
                         <m:timeIntervalStart>'.$start_date.'T00:00:00+08:00</m:timeIntervalStart>
                         <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
