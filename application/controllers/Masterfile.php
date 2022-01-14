@@ -2717,7 +2717,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                      $dr_last = $this->input->post('dr_end_int2s1_'.$count_set1);
 
 
-                            $xmlString .= '<m:BidSchedule>
+                            /*$xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
                                 <m:BidPriceCurve>
@@ -2730,7 +2730,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                                   <m:y1AxisData>0</m:y1AxisData>
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
-                               </m:BidSchedule>';
+                               </m:BidSchedule>';*/
 
                 
                             /********************* END OF FIRST SET HOUR 00-10 ONLY ****************************/
