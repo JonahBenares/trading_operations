@@ -980,7 +980,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
 
                      $dr_last_set2 = $this->input->post('dr_end_set2_'.$count_set2);
 
-                     if($dr_last_set2 != '24' || $dr_last_set2 != '00'){
+                     if($dr_last_set2 != "00"){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last_set2.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$end_date.'T00:00:00+08:00</m:timeIntervalEnd>
@@ -995,8 +995,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U02.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
-                     }
-
+                     } 
 
                 
             }
@@ -1778,7 +1777,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
 
                      $dr_last = $this->input->post('dr_end_int2s1_'.$count_set1);
 
-
+                     if($dr_last != '10'){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
@@ -1793,6 +1792,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U04.xml');
                                  </m:CurveSchedData>
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
+                           }
 
                 
                             /********************* END OF FIRST SET HOUR 00-10 ONLY ****************************/
@@ -2716,7 +2716,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
 
                      $dr_last = $this->input->post('dr_end_int2s1_'.$count_set1);
 
-
+                         if($dr_last != '10'){
                             $xmlString .= '<m:BidSchedule>
                                 <m:timeIntervalStart>'.$start_date.'T'. $dr_last.':00:00+08:00</m:timeIntervalStart>
                                 <m:timeIntervalEnd>'.$start_date.'T10:00:00+08:00</m:timeIntervalEnd>
@@ -2732,7 +2732,7 @@ $dom->save('../../../XMLExport/'.$now.'_06CENPRI_U05.xml');
                                 </m:BidPriceCurve>
                                </m:BidSchedule>';
 
-                
+                        }
                             /********************* END OF FIRST SET HOUR 00-10 ONLY ****************************/
 
                      
